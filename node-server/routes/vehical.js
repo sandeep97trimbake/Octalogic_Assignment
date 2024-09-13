@@ -5,18 +5,13 @@ const vehicalRepo = require("./../DBConfig/vehicalRepo")
 
 const repo =new vehicalRepo(connectionPool);
 
-/* GET vehical by type. */
-router.get('/:id', function(req, res, next) {
-    console.log("ID : " , req.params.id);
-    res.sendStatus(200)
-  res.send('get vehical');
-});
 
 /* GET vehical by type. */
-router.get('/:type', function(req, res, next) {
-    console.log("ID : " , req.params.type);
-    res.sendStatus(200)
-  res.send('get vehical');
+router.get("/type/:type", function(req, res) {
+    repo.getVehicalByType(req.params.type,(err,result) => {
+        err ? res.status(500).json({error : err.toString()})
+            : res.status(302).json(result);
+    });
 });
 
 module.exports = router;

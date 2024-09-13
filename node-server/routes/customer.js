@@ -13,9 +13,9 @@ router.get('/', function (req, res, next) {
 
 // Add Customer
 router.post("/add", function (req, res){
-    repo.save(req.body, (err) => {
+    repo.save(req.body, (err,customer) => {
         err ? res.status(500).json({ error: err.toString() })
-            : res.sendStatus(200);
+            : res.send(customer);
     });
 })
 

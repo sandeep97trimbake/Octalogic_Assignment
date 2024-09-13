@@ -3,7 +3,13 @@ class vehicalRepo{
         this.connectionPool=connectionPool
     }
 
-    get(type){}
+    get pool(){
+        return this.connectionPool.getpool();
+    }
+
+    getVehicalByType(type,callback){
+        this.pool.query("Select * from vehicle where type = ?",type,callback);
+    }
 }
 
 module.exports = vehicalRepo;
