@@ -9,7 +9,7 @@ var indexRouter = require('./routes/index');
 var vehicalRouter = require('./routes/vehical');
 var customerRouter = require('./routes/customer');
 var bookingRouter = require('./routes/booking');
-
+var questionMasterRouter = require('./routes/questionMaster');
 
 
 const connectionPool = require('./DBConfig/connectionpool')
@@ -31,5 +31,6 @@ app.use('/', indexRouter);
 app.use('/vehical', vehicalRouter);
 app.use('/customer', customerRouter);
 app.use('/booking', bookingRouter);
+app.use('/question', questionMasterRouter);
 
 module.exports = app;
