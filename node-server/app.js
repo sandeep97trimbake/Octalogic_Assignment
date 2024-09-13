@@ -4,7 +4,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var vehicalRouter = require('./routes/vehical');
+var customerRouter = require('./routes/customer');
+var bookingRouter = require('./routes/booking');
+
+
+
+const connectionPool = require('./DBConfig/connectionpool')
+
 
 var app = express();
 
@@ -14,7 +21,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+connectionPool.init();
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/vehical', vehicalRouter);
+app.use('/customer', customerRouter);
+app.use('/booking', bookingRouter);
 
 module.exports = app;
