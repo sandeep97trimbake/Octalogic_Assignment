@@ -3,6 +3,9 @@ import './App.css';
 import QuestionCard from './questions/questionCard';
 
 
+function nextCard(idx){
+    return idx = idx + 1;
+}
 
 function App() {
   const [questions, setQuestions] = useState([])
@@ -19,7 +22,9 @@ function App() {
         {
           questions.map((list, index) => (
             <>
-            <QuestionCard question = {list.question}></QuestionCard></>
+              <QuestionCard  question={list.question} type={list.fieldType}  count={list.count} name={"Qname"+index+1}></QuestionCard>
+              <button onClick={() => nextCard(index)}>Next</button>
+            </>
           ))
         }
       </ul>
