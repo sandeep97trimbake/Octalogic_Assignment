@@ -11,7 +11,8 @@ router.get('/', function (req, res, next) {
     res.send('get customer');
 });
 
-router.post("add/", function (req, res){
+// Add Customer
+router.post("/add", function (req, res){
     repo.save(req.body, (err) => {
         err ? res.status(500).json({ error: err.toString() })
             : res.sendStatus(200);

@@ -1,18 +1,20 @@
 const mysql = require("mysql");
-const dbconfig = require("./dbconfig");
+const dbconfig = require("../DBConfig/dbconfig");
 
 
-const connectionpool = {
+const connectionPool = {
     pool: null,
     init: function () {
 
-        this.pool = mysql.createConnection(dbconfig)
+        this.pool = mysql.createPool(dbconfig);
+
         console.log("Connection Pool Initialized")
     },
 
-    getconnection: function () {
-        return this.pool
+    getpool: function () {
+        console.log("Get Pool")
+        return this.pool;
     }
 }
 
-module.exports = connectionpool;
+module.exports = connectionPool;
